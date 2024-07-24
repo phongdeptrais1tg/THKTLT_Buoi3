@@ -30,6 +30,17 @@ void tongTungDong(int a[MAX][MAX], int m, int n) {
     }
 }
 
+void lonNhatTungCot(int a[MAX][MAX], int m, int n) {
+    for (int j = 0; j < n; j++) {
+        int max = a[0][j];
+        for (int i = 1; i < m; i++) {
+            if (a[i][j] > max) {
+                max = a[i][j];
+            }
+        }
+        printf("Phan tu lon nhat cot %d: %d\n", j, max);
+    }
+}
 int main() {
     srand(time_t(NULL));
     int a[MAX][MAX];
@@ -51,6 +62,7 @@ int main() {
         printf("\n===== MENU =====\n");
         printf("1. Tao va xuat ma tran\n");
         printf("2. Tinh va xuat tong gia tri tung dong\n");
+        printf("3. Xuat phan tu lon nhat tren tung cot\n");
         printf("0. Thoat\n");
         printf("Moi ban chon: ");
         scanf_s("%d", &chon);
@@ -60,6 +72,9 @@ int main() {
             break;
         case 2:
             tongTungDong(a, m, n);
+            break;
+        case 3:
+            lonNhatTungCot(a, m, n);
             break;
         case 0:
             printf("Thoat chuong trinh\n");
