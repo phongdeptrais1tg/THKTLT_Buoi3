@@ -40,6 +40,17 @@ void xuatCheoSongSong(int a[MAX][MAX], int n) {
         printf("\n");
     }
 }
+void maxTamGiacTren(int a[MAX][MAX], int n) {
+    int max = a[0][1];
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (a[i][j] > max) {
+                max = a[i][j];
+            }
+        }
+    }
+    printf("Phan tu lon nhat trong tam giac tren duong cheo chinh: %d\n", max);
+}
 int main() {
     srand(time_t(NULL));
     int a[MAX][MAX];
@@ -63,6 +74,7 @@ int main() {
         printf("1. Tao va xuat ma tran\n");
         printf("2. Xuat cac phan tu tren duong cheo chinh\n");
         printf("3. Xuat cac phan tu thuoc duong cheo song song voi duong cheo chinh\n");
+        printf("4. Tim phan tu lon nhat thuoc tam giac tren cua duong cheo chinh\n");
         printf("0. Thoat\n");
         printf("Moi ban chon: ");
         scanf_s("%d", &chon);
@@ -76,6 +88,9 @@ int main() {
             break;
         case 3:
             xuatCheoSongSong(a, n);
+            break;
+        case 4:
+            maxTamGiacTren(a, n);
             break;
         case 0:
             printf("Thoat chuong trinh\n");
