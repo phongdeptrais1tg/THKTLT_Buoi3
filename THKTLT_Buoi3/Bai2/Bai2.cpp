@@ -84,6 +84,26 @@ void sapXepZicZac(int a[MAX][MAX], int n) {
         }
     }
 }
+void sapXepCheoChinh(int a[MAX][MAX], int n) {
+    int b[MAX];
+    for (int i = 0; i < n; i++) {
+        b[i] = a[i][i];
+    }
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (b[i] > b[j]) {
+                int temp = b[i];
+                b[i] = b[j];
+                b[j] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        a[i][i] = b[i];
+    }
+}
 int main() {
     srand(time_t(NULL));
     int a[MAX][MAX];
@@ -109,6 +129,7 @@ int main() {
         printf("3. Xuat cac phan tu thuoc duong cheo song song voi duong cheo chinh\n");
         printf("4. Tim phan tu lon nhat thuoc tam giac tren cua duong cheo chinh\n");
         printf("5. Sap xep ma tran tang dan theo kieu zic-zac\n");
+        printf("6. Sap xep duong cheo chinh tang dan tu tren xuong duoi\n");
         printf("0. Thoat\n");
         printf("Moi ban chon: ");
         scanf_s("%d", &chon);
@@ -128,6 +149,10 @@ int main() {
             break;
         case 5:
             sapXepZicZac(a, n);
+            xuatMaTran(a, n);
+            break;
+        case 6:
+            sapXepCheoChinh(a, n);
             xuatMaTran(a, n);
             break;
         case 0:
