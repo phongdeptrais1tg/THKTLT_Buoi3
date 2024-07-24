@@ -51,6 +51,39 @@ void maxTamGiacTren(int a[MAX][MAX], int n) {
     }
     printf("Phan tu lon nhat trong tam giac tren duong cheo chinh: %d\n", max);
 }
+void sapXepZicZac(int a[MAX][MAX], int n) {
+    int b[MAX * MAX];
+    int k = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            b[k++] = a[i][j];
+        }
+    }
+
+    for (int i = 0; i < k - 1; i++) {
+        for (int j = i + 1; j < k; j++) {
+            if (b[i] > b[j]) {
+                int temp = b[i];
+                b[i] = b[j];
+                b[j] = temp;
+            }
+        }
+    }
+
+    k = 0;
+    for (int i = 0; i < n; i++) {
+        if (i % 2 == 0) {
+            for (int j = 0; j < n; j++) {
+                a[i][j] = b[k++];
+            }
+        }
+        else {
+            for (int j = n - 1; j >= 0; j--) {
+                a[i][j] = b[k++];
+            }
+        }
+    }
+}
 int main() {
     srand(time_t(NULL));
     int a[MAX][MAX];
@@ -75,6 +108,7 @@ int main() {
         printf("2. Xuat cac phan tu tren duong cheo chinh\n");
         printf("3. Xuat cac phan tu thuoc duong cheo song song voi duong cheo chinh\n");
         printf("4. Tim phan tu lon nhat thuoc tam giac tren cua duong cheo chinh\n");
+        printf("5. Sap xep ma tran tang dan theo kieu zic-zac\n");
         printf("0. Thoat\n");
         printf("Moi ban chon: ");
         scanf_s("%d", &chon);
@@ -91,6 +125,10 @@ int main() {
             break;
         case 4:
             maxTamGiacTren(a, n);
+            break;
+        case 5:
+            sapXepZicZac(a, n);
+            xuatMaTran(a, n);
             break;
         case 0:
             printf("Thoat chuong trinh\n");
