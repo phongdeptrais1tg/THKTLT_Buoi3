@@ -40,6 +40,18 @@ void xuatCotChiChuaSoLe(int a[MAX][MAX], int m, int n) {
         }
     }
 }
+int timPhanTuLonNhatTrenBien(int a[MAX][MAX], int m, int n) {
+    int max = a[0][0];
+    for (int i = 0; i < n; i++) {
+        if (a[0][i] > max) max = a[0][i];
+        if (a[m - 1][i] > max) max = a[m - 1][i];
+    }
+    for (int i = 1; i < m - 1; i++) {
+        if (a[i][0] > max) max = a[i][0];
+        if (a[i][n - 1] > max) max = a[i][n - 1];
+    }
+    return max;
+}
 int main() {
     int a[MAX][MAX];
     int m, n;
@@ -53,6 +65,7 @@ int main() {
         printf("\nMenu:\n");
         printf("1. Tao va xuat ma tran ngau nhien\n");
         printf("2. Xuat cac cot chi chua so le\n");
+        printf("3. Tim phan tu lon nhat tren bien\n");
         printf("0. Thoat\n");
         printf("Nhap lua chon: ");
         scanf_s("%d", &choice);
@@ -64,6 +77,9 @@ int main() {
             break;
         case 2:
             xuatCotChiChuaSoLe(a, m, n);
+            break;
+        case 3:
+            printf("Phan tu lon nhat tren bien: %d\n", timPhanTuLonNhatTrenBien(a, m, n));
             break;
         case 0:
             printf("Thoat chuong trinh\n");
