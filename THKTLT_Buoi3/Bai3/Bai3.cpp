@@ -68,6 +68,20 @@ int demPhanTuCoChuSo2(int a[MAX][MAX], int m, int n) {
     }
     return count;
 }
+void xuatPhanTuCucTieu(int a[MAX][MAX], int m, int n) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            int isMin = 1;
+            if (i > 0 && a[i][j] >= a[i - 1][j]) isMin = 0;
+            if (i < m - 1 && a[i][j] >= a[i + 1][j]) isMin = 0;
+            if (j > 0 && a[i][j] >= a[i][j - 1]) isMin = 0;
+            if (j < n - 1 && a[i][j] >= a[i][j + 1]) isMin = 0;
+            if (isMin) {
+                printf("a[%d][%d] = %d\n", i, j, a[i][j]);
+            }
+        }
+    }
+}
 int main() {
     int a[MAX][MAX];
     int m, n;
@@ -83,6 +97,7 @@ int main() {
         printf("2. Xuat cac cot chi chua so le\n");
         printf("3. Tim phan tu lon nhat tren bien\n");
         printf("4. Dem phan tu co chu so 2\n");
+        printf("5. Xuat cac phan tu cuc tieu\n");
         printf("0. Thoat\n");
         printf("Nhap lua chon: ");
         scanf_s("%d", &choice);
@@ -100,6 +115,9 @@ int main() {
             break;
         case 4:
             printf("So phan tu co chu so 2: %d\n", demPhanTuCoChuSo2(a, m, n));
+            break;
+        case 5:
+            xuatPhanTuCucTieu(a, m, n);
             break;
         case 0:
             printf("Thoat chuong trinh\n");
