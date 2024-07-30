@@ -140,6 +140,20 @@ void lietKeDongChuaToanGiaTriChan(int a[MAX][MAX], int m, int n) {
         }
     }
 }
+void lietKeDongChuaGiaTriGiamDan(int a[MAX][MAX], int m, int n) {
+    for (int i = 0; i < m; i++) {
+        int isDecreasing = 1;
+        for (int j = 0; j < n - 1; j++) {
+            if (a[i][j] < a[i][j + 1]) {
+                isDecreasing = 0;
+                break;
+            }
+        }
+        if (isDecreasing) {
+            printf("Dong %d\n", i);
+        }
+    }
+}
 int main() {
     int a[MAX][MAX];
     int m, n;
@@ -160,6 +174,7 @@ int main() {
         printf("7. Sap xep ma tran theo cot (le giam, chan tang)\n");
         printf("8. Kiem tra ziczac\n");
         printf("9. Liet ke dong chua toan gia tri chan\n");
+        printf("10. Liet ke dong chua gia tri giam dan\n");
         printf("0. Thoat\n");
         printf("Nhap lua chon: ");
         scanf_s("%d", &choice);
@@ -194,6 +209,9 @@ int main() {
             break;
         case 9:
             lietKeDongChuaToanGiaTriChan(a, m, n);
+            break;
+        case 10:
+            lietKeDongChuaGiaTriGiamDan(a, m, n);
             break;
         case 0:
             printf("Thoat chuong trinh\n");
