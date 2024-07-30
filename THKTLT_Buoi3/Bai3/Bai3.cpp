@@ -154,6 +154,21 @@ void lietKeDongChuaGiaTriGiamDan(int a[MAX][MAX], int m, int n) {
         }
     }
 }
+int timGiaTriXuatHienNhieuNhat(int a[MAX][MAX], int m, int n) {
+    int freq[MAX * MAX] = { 0 };
+    int maxFreq = 0;
+    int maxValue = a[0][0];
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            freq[a[i][j]]++;
+            if (freq[a[i][j]] > maxFreq) {
+                maxFreq = freq[a[i][j]];
+                maxValue = a[i][j];
+            }
+        }
+    }
+    return maxValue;
+}
 int main() {
     int a[MAX][MAX];
     int m, n;
@@ -175,6 +190,7 @@ int main() {
         printf("8. Kiem tra ziczac\n");
         printf("9. Liet ke dong chua toan gia tri chan\n");
         printf("10. Liet ke dong chua gia tri giam dan\n");
+        printf("11. Tim gia tri xuat hien nhieu nhat\n");
         printf("0. Thoat\n");
         printf("Nhap lua chon: ");
         scanf_s("%d", &choice);
@@ -212,6 +228,9 @@ int main() {
             break;
         case 10:
             lietKeDongChuaGiaTriGiamDan(a, m, n);
+            break;
+        case 11:
+            printf("Gia tri xuat hien nhieu nhat: %d\n", timGiaTriXuatHienNhieuNhat(a, m, n));
             break;
         case 0:
             printf("Thoat chuong trinh\n");
