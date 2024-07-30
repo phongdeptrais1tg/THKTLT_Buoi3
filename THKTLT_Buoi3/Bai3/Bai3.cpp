@@ -194,6 +194,32 @@ void timCacChuSoXuatHienNhieuNhat(int a[MAX][MAX], int m, int n) {
     }
     printf("\n");
 }
+void lietKeCacCotCoTongNhoNhat(int a[MAX][MAX], int m, int n) {
+    int minSum = 0;
+    for (int i = 0; i < m; i++) {
+        minSum += a[i][0];
+    }
+    for (int j = 1; j < n; j++) {
+        int sum = 0;
+        for (int i = 0; i < m; i++) {
+            sum += a[i][j];
+        }
+        if (sum < minSum) {
+            minSum = sum;
+        }
+    }
+    printf("Cac cot co tong nho nhat: ");
+    for (int j = 0; j < n; j++) {
+        int sum = 0;
+        for (int i = 0; i < m; i++) {
+            sum += a[i][j];
+        }
+        if (sum == minSum) {
+            printf("%d ", j);
+        }
+    }
+    printf("\n");
+}
 int main() {
     int a[MAX][MAX];
     int m, n;
@@ -217,6 +243,7 @@ int main() {
         printf("10. Liet ke dong chua gia tri giam dan\n");
         printf("11. Tim gia tri xuat hien nhieu nhat\n");
         printf("12. Tim cac chu so xuat hien nhieu nhat\n");
+        printf("13. Liet ke cot co tong nho nhat\n");
         printf("0. Thoat\n");
         printf("Nhap lua chon: ");
         scanf_s("%d", &choice);
@@ -261,6 +288,10 @@ int main() {
         case 12:
             timCacChuSoXuatHienNhieuNhat(a, m, n);
             break;
+        case 13:
+            lietKeCacCotCoTongNhoNhat(a, m, n);
+            break;
+        case 14:
         case 0:
             printf("Thoat chuong trinh\n");
             break;
