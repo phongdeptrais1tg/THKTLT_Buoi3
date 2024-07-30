@@ -126,6 +126,20 @@ int kiemTraZiczac(int a[MAX][MAX], int m, int n) {
     }
     return 1;
 }
+void lietKeDongChuaToanGiaTriChan(int a[MAX][MAX], int m, int n) {
+    for (int i = 0; i < m; i++) {
+        int isEvenRow = 1;
+        for (int j = 0; j < n; j++) {
+            if (a[i][j] % 2 != 0) {
+                isEvenRow = 0;
+                break;
+            }
+        }
+        if (isEvenRow) {
+            printf("Dong %d\n", i);
+        }
+    }
+}
 int main() {
     int a[MAX][MAX];
     int m, n;
@@ -145,6 +159,7 @@ int main() {
         printf("6. Sap xep ma tran theo dong (le tang, chan giam)\n");
         printf("7. Sap xep ma tran theo cot (le giam, chan tang)\n");
         printf("8. Kiem tra ziczac\n");
+        printf("9. Liet ke dong chua toan gia tri chan\n");
         printf("0. Thoat\n");
         printf("Nhap lua chon: ");
         scanf_s("%d", &choice);
@@ -176,6 +191,9 @@ int main() {
             break;
         case 8:
             printf("Ma tran giam dan ziczac: %s\n", kiemTraZiczac(a, m, n) ? "Co" : "Khong");
+            break;
+        case 9:
+            lietKeDongChuaToanGiaTriChan(a, m, n);
             break;
         case 0:
             printf("Thoat chuong trinh\n");
