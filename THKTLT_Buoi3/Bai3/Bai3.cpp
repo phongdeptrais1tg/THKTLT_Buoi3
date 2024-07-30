@@ -227,6 +227,13 @@ void hoanViHaiCot(int a[MAX][MAX], int m, int col1, int col2) {
         a[i][col2] = temp;
     }
 }
+void hoanViHaiDong(int a[MAX][MAX], int n, int row1, int row2) {
+    for (int j = 0; j < n; j++) {
+        int temp = a[row1][j];
+        a[row1][j] = a[row2][j];
+        a[row2][j] = temp;
+    }
+}
 int main() {
     int a[MAX][MAX];
     int m, n;
@@ -252,6 +259,7 @@ int main() {
         printf("12. Tim cac chu so xuat hien nhieu nhat\n");
         printf("13. Liet ke cot co tong nho nhat\n");
         printf("14. Hoan vi hai cot\n");
+        printf("15. Hoan vi hai dong\n");
         printf("0. Thoat\n");
         printf("Nhap lua chon: ");
         scanf_s("%d", &choice);
@@ -304,6 +312,13 @@ int main() {
             printf("Nhap hai cot can hoan vi (0 <= col < %d): ", n);
             scanf_s("%d %d", &col1, &col2);
             hoanViHaiCot(a, m, col1, col2);
+            xuatMaTran(a, m, n);
+            break;
+        case 15:
+            int row1, row2;
+            printf("Nhap hai dong can hoan vi (0 <= row < %d): ", m);
+            scanf_s("%d %d", &row1, &row2);
+            hoanViHaiDong(a, n, row1, row2);
             xuatMaTran(a, m, n);
             break;
         case 0:
