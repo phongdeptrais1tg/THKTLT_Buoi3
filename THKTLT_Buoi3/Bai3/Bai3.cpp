@@ -169,6 +169,31 @@ int timGiaTriXuatHienNhieuNhat(int a[MAX][MAX], int m, int n) {
     }
     return maxValue;
 }
+void timCacChuSoXuatHienNhieuNhat(int a[MAX][MAX], int m, int n) {
+    int digitCount[10] = { 0 };
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            int num = a[i][j];
+            while (num != 0) {
+                digitCount[num % 10]++;
+                num /= 10;
+            }
+        }
+    }
+    int maxCount = 0;
+    for (int i = 0; i < 10; i++) {
+        if (digitCount[i] > maxCount) {
+            maxCount = digitCount[i];
+        }
+    }
+    printf("Cac chu so xuat hien nhieu nhat: ");
+    for (int i = 0; i < 10; i++) {
+        if (digitCount[i] == maxCount) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+}
 int main() {
     int a[MAX][MAX];
     int m, n;
@@ -191,6 +216,7 @@ int main() {
         printf("9. Liet ke dong chua toan gia tri chan\n");
         printf("10. Liet ke dong chua gia tri giam dan\n");
         printf("11. Tim gia tri xuat hien nhieu nhat\n");
+        printf("12. Tim cac chu so xuat hien nhieu nhat\n");
         printf("0. Thoat\n");
         printf("Nhap lua chon: ");
         scanf_s("%d", &choice);
@@ -231,6 +257,9 @@ int main() {
             break;
         case 11:
             printf("Gia tri xuat hien nhieu nhat: %d\n", timGiaTriXuatHienNhieuNhat(a, m, n));
+            break;
+        case 12:
+            timCacChuSoXuatHienNhieuNhat(a, m, n);
             break;
         case 0:
             printf("Thoat chuong trinh\n");
