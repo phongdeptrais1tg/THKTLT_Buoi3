@@ -116,6 +116,16 @@ void sapXepMaTranTheoCot(int a[MAX][MAX], int m, int n) {
         sapXepCot(a, m, n, j, j % 2 != 0);
     }
 }
+int kiemTraZiczac(int a[MAX][MAX], int m, int n) {
+    for (int i = 0; i < m - 1; i++) {
+        for (int j = 0; j < n - 1; j++) {
+            if (a[i][j] < a[i + 1][j] || a[i][j] < a[i][j + 1]) {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
 int main() {
     int a[MAX][MAX];
     int m, n;
@@ -134,6 +144,7 @@ int main() {
         printf("5. Xuat cac phan tu cuc tieu\n");
         printf("6. Sap xep ma tran theo dong (le tang, chan giam)\n");
         printf("7. Sap xep ma tran theo cot (le giam, chan tang)\n");
+        printf("8. Kiem tra ziczac\n");
         printf("0. Thoat\n");
         printf("Nhap lua chon: ");
         scanf_s("%d", &choice);
@@ -162,6 +173,9 @@ int main() {
         case 7:
             sapXepMaTranTheoCot(a, m, n);
             xuatMaTran(a, m, n);
+            break;
+        case 8:
+            printf("Ma tran giam dan ziczac: %s\n", kiemTraZiczac(a, m, n) ? "Co" : "Khong");
             break;
         case 0:
             printf("Thoat chuong trinh\n");
