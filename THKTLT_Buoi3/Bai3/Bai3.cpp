@@ -99,6 +99,23 @@ void sapXepMaTranTheoDong(int a[MAX][MAX], int m, int n) {
         sapXepDong(a[i], n, i % 2 != 0);
     }
 }
+void sapXepCot(int a[MAX][MAX], int m, int n, int col, int isOddCol) {
+    for (int i = 0; i < m - 1; i++) {
+        for (int j = i + 1; j < m; j++) {
+            if ((isOddCol && a[i][col] < a[j][col]) || (!isOddCol && a[i][col] > a[j][col])) {
+                int temp = a[i][col];
+                a[i][col] = a[j][col];
+                a[j][col] = temp;
+            }
+        }
+    }
+}
+
+void sapXepMaTranTheoCot(int a[MAX][MAX], int m, int n) {
+    for (int j = 0; j < n; j++) {
+        sapXepCot(a, m, n, j, j % 2 != 0);
+    }
+}
 int main() {
     int a[MAX][MAX];
     int m, n;
@@ -116,6 +133,7 @@ int main() {
         printf("4. Dem phan tu co chu so 2\n");
         printf("5. Xuat cac phan tu cuc tieu\n");
         printf("6. Sap xep ma tran theo dong (le tang, chan giam)\n");
+        printf("7. Sap xep ma tran theo cot (le giam, chan tang)\n");
         printf("0. Thoat\n");
         printf("Nhap lua chon: ");
         scanf_s("%d", &choice);
@@ -139,6 +157,10 @@ int main() {
             break;
         case 6:
             sapXepMaTranTheoDong(a, m, n);
+            xuatMaTran(a, m, n);
+            break;
+        case 7:
+            sapXepMaTranTheoCot(a, m, n);
             xuatMaTran(a, m, n);
             break;
         case 0:
